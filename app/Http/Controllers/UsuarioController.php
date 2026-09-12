@@ -7,12 +7,20 @@ use App\Models\Usuario;
 
 class UsuarioController extends Controller
 {
-    public function index()
-    {
-        $usuarios = Usuario::all();
+    
+    public function index(Request $request)
+  {
+    $buscar = $request->buscar;
 
-        return view('usuarios.index', compact('usuarios'));
-    }
+    $usuarios = Usuario::query()
+        ->when($buscar, function ($query, $buscar) {
+            $query->where('nombres', 'like', '%' . $buscar . '%')
+                  ->orWhere('cedula', 'like', '%' . $buscar . '%');
+        })
+        ->get();
+
+    return view('usuarios.index', compact('usuarios', 'buscar'));
+  }
 
     public function create()
     {

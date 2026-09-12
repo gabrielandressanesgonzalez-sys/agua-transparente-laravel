@@ -37,7 +37,26 @@
             </a>
 
         </div>
+<form action="{{ route('usuarios.index') }}" method="GET" class="formulario-busqueda">
 
+    <input
+        type="text"
+        name="buscar"
+        value="{{ $buscar ?? '' }}"
+        placeholder="Buscar por nombre o cédula"
+    >
+
+    <button type="submit" class="boton boton-principal">
+        🔎 Buscar
+    </button>
+
+    @if (!empty($buscar))
+        <a href="{{ route('usuarios.index') }}" class="boton boton-editar">
+            Limpiar
+        </a>
+    @endif
+
+</form>
         @if ($usuarios->count() > 0)
 
             <div class="tabla-contenedor">
@@ -137,20 +156,35 @@
 
         @else
 
-            <div class="tabla-contenedor" style="padding: 30px;">
+    <div class="tabla-contenedor" style="padding: 30px;">
 
-                <p>No hay usuarios registrados todavía.</p>
+        @if (!empty($buscar))
+            <p>
+                No se encontraron usuarios para la búsqueda:
+                <strong>{{ $buscar }}</strong>
+            </p>
 
-                <br>
+            <br>
 
-                <a href="{{ route('usuarios.create') }}"
-                   class="boton boton-principal">
-                    Registrar el primer usuario
-                </a>
+            <a href="{{ route('usuarios.index') }}"
+               class="boton boton-editar">
+                Limpiar búsqueda
+            </a>
 
-            </div>
+        @else
+            <p>No hay usuarios registrados todavía.</p>
 
+            <br>
+
+            <a href="{{ route('usuarios.create') }}"
+               class="boton boton-principal">
+                Registrar el primer usuario
+            </a>
         @endif
+
+    </div>
+
+@endif
 
     </div>
 

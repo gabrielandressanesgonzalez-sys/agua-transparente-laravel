@@ -135,3 +135,26 @@ tbody tr:hover {
     background: #ffe3e3;
     color: #c92a2a;
 }
+
+.formulario-busqueda {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.formulario-busqueda input {
+    flex: 1;
+    min-width: 250px;
+    padding: 11px 14px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+}
+
+.formulario-busqueda input:focus {
+    border-color: #0b7285;
+    box-shadow: 0 0 0 3px rgba(11, 114, 133, 0.12);
+}
