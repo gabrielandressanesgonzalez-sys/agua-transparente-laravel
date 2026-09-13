@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,4 +24,22 @@ Route::put('/usuarios/{id}', [UsuarioController::class, 'update'])
 
 Route::delete('/usuarios/{id}', [UsuarioController::class, 'destroy'])
     ->name('usuarios.destroy');  
+
+// Rutas para el registro de usuarios
+Route::get('/registro', [AuthController::class, 'mostrarRegistro'])
+    ->name('registro');
+
+Route::post('/registro', [AuthController::class, 'registrar'])
+    ->name('registro.procesar');
+
+// Rutas para el inicio de sesión
+Route::get('/login', [AuthController::class, 'mostrarLogin'])
+    ->name('login');
+
+Route::post('/login', [AuthController::class, 'login'])
+    ->name('login.procesar');
+
+// Ruta para cerrar sesión
+Route::post('/logout', [AuthController::class, 'logout'])
+    ->name('logout');
 
