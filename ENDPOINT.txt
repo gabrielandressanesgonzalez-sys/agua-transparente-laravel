@@ -1,0 +1,60 @@
+GA7-220501096-AA5-EV02
+API - Agua Transparente
+
+ENDPOINTS DE LA API
+
+1. REGISTRO DE USUARIO
+Método: POST
+Endpoint: http://127.0.0.1:8000/api/registro
+Descripción: Permite registrar un nuevo usuario en el sistema.
+
+Datos enviados:
+{
+    "name": "Usuario API",
+    "email": "usuario.api@gmail.com",
+    "password": "Agua123456"
+}
+
+Respuesta exitosa:
+Código HTTP: 201 Created
+Mensaje: Usuario registrado correctamente.
+
+
+2. INICIO DE SESIÓN
+Método: POST
+Endpoint: http://127.0.0.1:8000/api/login
+Descripción: Permite autenticar un usuario mediante correo electrónico y contraseña.
+
+Datos enviados:
+{
+    "email": "usuario.api@gmail.com",
+    "password": "Agua123456"
+}
+
+Respuesta exitosa:
+Código HTTP: 200 OK
+Mensaje: Autenticación satisfactoria.
+
+Respuesta cuando las credenciales son incorrectas:
+Código HTTP: 401 Unauthorized
+Mensaje: Error de autenticación: usuario o contraseña incorrectos.
+
+
+3. CONSULTA DE USUARIOS
+Método: GET
+Endpoint: http://127.0.0.1:8000/api/usuarios
+Descripción: Permite consultar los usuarios registrados en el sistema.
+
+Respuesta exitosa:
+Código HTTP: 200 OK
+Mensaje: Usuarios consultados correctamente.
+
+
+PROYECTO:
+Agua Transparente
+
+TECNOLOGÍA:
+Laravel / PHP
+
+HERRAMIENTA DE TESTING:
+Postman
